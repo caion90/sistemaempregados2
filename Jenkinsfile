@@ -30,12 +30,12 @@ pipeline {
   // api ccccxcvcv
   
   post {
-    always {
+    success {
       sh '''
       sudo docker-compose up -d --no-color
       '''
     }
-    stage('Test') {
+    success {
       steps {
       sh 'curl http://168.227.56.72:8000/api/v1/empregados | jq' 
     }
