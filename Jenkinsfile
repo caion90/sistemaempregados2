@@ -17,29 +17,30 @@ pipeline {
           sh 'sudo docker system prune -a --volumes -f'
       }
      }
-      stage('Start container') {
+      stage('Build container') {
         steps {
          sh '''
          sudo docker-compose build
+         sudo docker-compose down
+         sudo docker-compose up -d --no-color
+         '''
+      }
+    }
+     stage('Test container') {
+        steps {
+         sh '''
+         curl http://168.227.56.72:8000/api/v1/empregados | jq
+         curl http://168.227.56.72:80/
          sudo docker-compose down
          '''
       }
     }
   }
-  
-  // api ccccxcvcv
-  
   post {
     success {
       sh '''
       sudo docker-compose up -d --no-color
       '''
     }
-    success {
-      steps {
-      sh 'curl http://168.227.56.72:8000/api/v1/empregados | jq' 
-    }
   }
-
-}
 }
