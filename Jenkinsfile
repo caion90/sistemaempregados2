@@ -32,6 +32,9 @@ pipeline {
       }
     }
   }
+  
+  //teste
+  
 //  post {
 //    always {
 //    sh 'sudo docker-compose down --remove-orphans -v'
