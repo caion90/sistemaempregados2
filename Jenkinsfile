@@ -12,17 +12,15 @@ pipeline {
           '''
       }
     }
-//      stage('Prune all docker data') {
-//        steps {
-//         sh 'sudo docker system prune -a --volumes -f'
-//      }
-//    }
+      stage('Prune all docker data') {
+        steps {
+          sh 'sudo docker system prune -a --volumes -f'
+      }
+     }
       stage('Start container') {
         steps {
          sh '''
          sudo docker-compose build
-         sudo docker-compose up -d
-         sudo docker-compose ps
          '''
       }
     }
@@ -35,10 +33,11 @@ pipeline {
   
   // api ccccxcvcv
   
-//  post {
-//    always {
-//    sh 'sudo docker-compose down --remove-orphans -v'
-//    sh 'sudo docker-compose ps'
-//  }
-//}
+  post {
+    always {
+         sh '''
+         sudo docker-compose up -d --no-color
+         '''
+  }
+}
 }
