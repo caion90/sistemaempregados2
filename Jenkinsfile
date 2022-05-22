@@ -12,11 +12,11 @@ pipeline {
           '''
       }
     }
-      stage('Prune all docker data') {
-        steps {
-         sh 'sudo docker system prune -a --volumes -f'
-      }
-    }
+//      stage('Prune all docker data') {
+//        steps {
+//         sh 'sudo docker system prune -a --volumes -f'
+//      }
+//    }
       stage('Start container') {
         steps {
          sh 'sudo docker-compose up -d'
