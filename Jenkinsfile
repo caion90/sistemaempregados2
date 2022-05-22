@@ -21,12 +21,8 @@ pipeline {
         steps {
          sh '''
          sudo docker-compose build
+         sudo docker-compose down
          '''
-      }
-    }
-      stage('Test') {
-        steps {
-          sh 'curl http://168.227.56.72:8000/api/v1/empregados | jq' 
       }
     }
   }
@@ -35,9 +31,15 @@ pipeline {
   
   post {
     always {
-         sh '''
-         sudo docker-compose up -d --no-color
-         '''
+      sh '''
+      sudo docker-compose up -d --no-color
+      '''
+    }
+    stage('Test') {
+      steps {
+      sh 'curl http://168.227.56.72:8000/api/v1/empregados | jq' 
+    }
   }
+
 }
 }
