@@ -67,7 +67,7 @@ const ListaEmpregados = () => {
                         </tr>
                     </thead>
                     {!carregando && (
-                        <tbody className="bg-gray">
+                        <tbody className="bg-white">
                             {empregados.map((empregadosmap) => (
                                 <Empregado
                                     Empregadotag={empregadosmap}
