@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import EmpregadoService from './EmpregadoService'
+import EmpregadoService from '../services/EmpregadoService'
 
 
 const AdcEmpregado = () => {
@@ -18,11 +18,12 @@ const AdcEmpregado = () => {
     const salvarEmpregado = (e) => {
         e.preventDefault();
         EmpregadoService.salvar(empregado).then((response) => {
+            navigate("/");
             console.log(response);
         }).catch((error) => {
+            alert(error);
             console.log(error);
         })
-        navigate("/");
     };
 
     const handleChange = (e) => {

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import EmpregadoService from './EmpregadoService';
+import EmpregadoService from '../services/EmpregadoService';
 import Empregado from './Empregado';
 
 const ListaEmpregados = () => {
     const navigate = useNavigate();
+
 
     const [carregando, setCarregando] = useState(true);
     const [empregados, setEmpregados] = useState(null);
@@ -22,19 +23,6 @@ const ListaEmpregados = () => {
         };
         fetchData();
     }, []);
-
-    const deletarEmpregado = (id) => {
-        console.log('init delet')
-        EmpregadoService.deletarEmpregado(id).then((res) => {
-            if (empregados) {
-                setEmpregados((prevElement) => {
-                    console.log('deletado');
-                    return prevElement.filter((empregado) => empregado.id != id);
-                });
-            }
-        })
-    }
-
 
     return (
         <div className="container mx-auto my-8">

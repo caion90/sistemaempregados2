@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import EmpregadoService from "./EmpregadoService";
+import EmpregadoService from "../services/EmpregadoService";
+import ListaEmpregados from "./ListaEmpregados";
 
 const Empregado = ({ Empregadotag }) => {
 
@@ -15,6 +16,8 @@ const Empregado = ({ Empregadotag }) => {
         e.preventDefault();
         EmpregadoService.deletarEmpregado(id).then((response) => {
             console.log(response);
+            navigate('/');
+            // window.location.reload(false);
         });
     }
 
