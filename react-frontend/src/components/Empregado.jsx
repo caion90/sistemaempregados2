@@ -17,7 +17,7 @@ const Empregado = ({ Empregadotag }) => {
         EmpregadoService.deletarEmpregado(id).then((response) => {
             console.log(response);
             navigate('/');
-            // window.location.reload(false);
+            window.location.reload(false);
         });
     }
 
